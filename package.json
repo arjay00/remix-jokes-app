@@ -10,7 +10,9 @@
     "build": "remix build",
     "dev": "remix dev",
     "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "commit": "cz",
+    "release": "git fetch --all && standard-version --no-verify"
   },
   "dependencies": {
     "@prisma/client": "^3.5.0",
@@ -26,12 +28,56 @@
     "@types/bcrypt": "^5.0.0",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "esbuild-register": "^3.2.0",
     "prisma": "^3.5.0",
+    "standard-version": "^9.5.0",
     "typescript": "^4.1.2"
   },
   "engines": {
     "node": ">=14"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "standard-version": {
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "section": "Chores"
+      },
+      {
+        "type": "docs",
+        "section": "Documentations"
+      },
+      {
+        "type": "style",
+        "section": "Styles"
+      },
+      {
+        "type": "refactor",
+        "section": "Refactors"
+      },
+      {
+        "type": "perf",
+        "section": "Performance"
+      },
+      {
+        "type": "test",
+        "section": "Tests"
+      }
+    ]
+  }
 }
